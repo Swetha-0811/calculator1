@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            box-shadow: inset 0 0 10px rgba(149, 154, 211, 0.682);
+            outline:none;
+        }
+        .container{
+           
+            height:150vh;
+            
+            display:flex;
+            justify-content:center;
+            background-color: rgb(74, 179, 179);
+
+        }
+        .box{
+            display:grid;
+            grid-template-columns: repeat(4, 70px);
+            padding:10px;
+            box-shadow: inset 0 0 10px rgb(14, 50, 108);
+            height:500px;
+            width:300px;
+            background-color: rgb(14, 142, 137);
+            border-radius: 20px;
+            justify-content: center;
+            
+        }
+        input{
+            background-color:rgb(185, 222, 232);
+            width:250px;
+            height:40px;
+            border:2px solid skyblue;
+            font-size: 19px;
+            text-align: right;
+            margin:30px;
+            grid-column:span 4;
+            
+
+        }
+        button{
+            width:50px;
+            height:40px;
+            overflow:hidden;
+            border-radius: 5px;
+            text-align:center;
+            padding:10px;
+            margin:15px;
+            font-size: 16px;
+            background-color: rgb(180, 216, 231);
+            
+        }
+        button:hover{
+            background-color: rgb(227, 245, 251);
+            cursor: pointer;
+            box-shadow: inset 0 0 10px rgba(33, 2, 42, 0.147);
+        }
+     .equal{
+        width:100px;
+        font-weight: bold;
+     }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <input type="text" placeholder="0" id="input">
+            <button onclick="clearInput()">CL</button>
+            <button onclick="del()">DEL</button>
+            <button onclick="display('%')">%</button>
+            <button onclick="display('/')">/</button>
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button onclick="display('*')">*</button>
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button onclick="display('-')">-</button>
+            <button onclick="display('1')">1</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('3')">3</button>
+            <button onclick="display('+')">+</button>
+            <button onclick="display('.')">.</button>
+            <button onclick="display('0')">0</button>
+            <button onclick="calculate()" class="equal">=</button>
+
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    let input=document.getElementById("input");
+    
+
+    function display(num){
+        
+        input.value += num;
+    }
+
+    function calculate(){
+        try{
+            input.value = eval(input.value);
+        }
+        catch(err){
+            alert("This is Invalid!!");
+        }
+    }
+    function clearInput(){
+        input.value=" ";
+    }
+    function del(){
+        input.value=input.value.slice(0,-1);
+    }
+
+</script>
+</html>
